@@ -21,5 +21,15 @@ x_max_length = 20
 
 if __name__ == '__main__':
     dt = DataProcessing.DataTransform('SPY-daily-2021-2023.csv', lambdas, polynomial_order, x_max_length)
+    mu_array = pd.DataFrame(dt.batchMu(), columns=lambdas)
+    print(dt.x)
+    print(dt.x_data[:200])
+    for i in range(dt.data_points):
+        dt.step(dt.x_data.loc[dt.warmup_period + i])
+    print(dt.x)
+    print(dt.x_data[-200:])
+    print(dt.mu)
+    print(mu_array)
+
 
 
