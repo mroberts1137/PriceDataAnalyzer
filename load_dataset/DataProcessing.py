@@ -102,7 +102,7 @@ class DataTransform:
 
         for i, l in enumerate(self.lambdas):
             for j in range(self.data_points):
-                window = self.x_data.loc[t0 + j + 1 - l: t0 + j + 1, 'Close']
+                window = self.x_data.loc[t0 + j + 1 - l: t0 + j, 'Close']
                 mu[j, i] = np.mean(window)
         return mu
 
